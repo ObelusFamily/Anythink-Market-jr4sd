@@ -64,6 +64,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by!(slug: params[:slug])
+    if @item.image == ''
+      @item.image = 'https://github.com/ObelusFamily/Anythink-Market-jr4sd/blob/fd8049048bc4c5266230be3a1f6abd945ebdcfd8/frontend/public/placeholder.png'
+    end
   end
 
   def update
