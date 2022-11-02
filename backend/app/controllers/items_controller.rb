@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
           title: item.title,
           slug: item.slug,
           description: item.description,
-          image: item.image,
+          image: item.image || 'https://github.com/ObelusFamily/Anythink-Market-jr4sd/blob/fd8049048bc4c5266230be3a1f6abd945ebdcfd8/frontend/public/placeholder.png',
           tagList: item.tags.map(&:name),
           createdAt: item.created_at,
           updatedAt: item.updated_at,
@@ -64,9 +64,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by!(slug: params[:slug])
-    if @item.image == ''
-      @item.image = 'https://github.com/ObelusFamily/Anythink-Market-jr4sd/blob/fd8049048bc4c5266230be3a1f6abd945ebdcfd8/frontend/public/placeholder.png'
-    end
   end
 
   def update
