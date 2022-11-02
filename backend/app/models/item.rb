@@ -11,7 +11,6 @@ class Item < ApplicationRecord
   acts_as_taggable
 
   validates :title, presence: true, allow_blank: false
-  validates :image, presence: true
   validates :description, presence: true, allow_blank: false
   validates :slug, uniqueness: true, exclusion: { in: ['feed'] }
 
