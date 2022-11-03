@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Item < ApplicationRecord
+  attr_ :image
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -16,5 +17,10 @@ class Item < ApplicationRecord
 
   before_validation do
     self.slug ||= "#{title.to_s.parameterize}-#{rand(36**6).to_s(36)}"
+  end
+
+  private
+  def image
+    @image || "placeholder.png"
   end
 end
