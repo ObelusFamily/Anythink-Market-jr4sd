@@ -12,7 +12,6 @@ class Item < ApplicationRecord
 
   validates :title, presence: true, allow_blank: false
   validates :description, presence: true, allow_blank: false
-  validates :image, presence: true, allow_blank: false
   validates :slug, uniqueness: true, exclusion: { in: ['feed'] }
 
   before_validation do
