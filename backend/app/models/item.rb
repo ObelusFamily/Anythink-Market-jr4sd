@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Item < ApplicationRecord
-  attr_ :image
+  attr_accessor :image
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -21,6 +21,6 @@ class Item < ApplicationRecord
 
   private
   def image
-    @image || "placeholder.png"
+    @image ||= "placeholder.png"
   end
 end
