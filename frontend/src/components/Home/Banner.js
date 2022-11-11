@@ -5,17 +5,16 @@ import logo from "../../imgs/logo.png";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch) => ({
-  onKeypress: (type, payload) =>
-    dispatch({ type, payload }),
+  onKeypress: (type, payload) => dispatch({ type, payload }),
 });
 
 const Banner = (props) => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if (search.length >= 3){
-      props.onKeypress(SEARCH_FILTER, search)
-    }  
+    if (search.length >= 3) {
+      props.onKeypress(SEARCH_FILTER, search);
+    }
   }, [search]);
 
   return (
@@ -24,9 +23,12 @@ const Banner = (props) => {
         <img src={logo} alt="banner" />
         <div>
           <span id="get-part">A place to get</span>
-          <input type="text" id='search-box' placeholder="What is it that you really desire"
-                 onChange={e => setSearch(e.target.value)}>
-          </input>
+          <input
+            type="text"
+            id="search-box"
+            placeholder="What is it that you really desire"
+            onChange={(e) => setSearch(e.target.value)}
+          ></input>
           <span> the cool stuff.</span>
         </div>
       </div>
