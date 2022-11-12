@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SEARCH_FILTER } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
 import { connect } from "react-redux";
@@ -9,6 +8,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Banner = (props) => {
+  const [box, setBox] = useState(false);
+
   useEffect(() => {
     if (props.search.length >= 3) {
       props.onKeypress(SEARCH_FILTER, props.search);
@@ -20,13 +21,17 @@ const Banner = (props) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
-          <span id="get-part">A place to get</span>
-          <input
-            type="text"
-            id="search-box"
-            placeholder="What is it that you really desire"
-            onChange={(e) => props.setSearch(e.target.value)}
-          ></input>
+          <span id="get-part">
+            A place to <span onClick={() => setBox(!box)}>get</span>
+          </span>
+          {box && (
+            <input
+              type="text"
+              id="search-box"
+              placeholder="What is it that you really desire"
+              onChange={(e) => props.setSearch(e.target.value)}
+            ></input>
+          )}
           <span> the cool stuff.</span>
         </div>
       </div>
