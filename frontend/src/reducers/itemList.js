@@ -60,7 +60,6 @@ const reducer = (state = {}, action) => {
     case HOME_PAGE_UNLOADED:
       return {};
     case SEARCH_FILTER:
-      console.log(state.items, action.payload);
       return {
         ...state,
         items: state.items.filter((item) =>

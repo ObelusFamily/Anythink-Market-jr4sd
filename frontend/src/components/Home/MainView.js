@@ -86,13 +86,14 @@ const MainView = (props) => {
         </ul>
       </div>
 
-      <ItemList
+      { props.items ? 
+        <ItemList
         pager={props.pager}
         items={props.items}
         loading={props.loading}
         itemsCount={props.itemsCount}
-        currentPage={props.currentPage}
-      />
+        currentPage={props.currentPage}/> : <div id='empty'>No items found </div> }
+      
     </div>
   );
 };
