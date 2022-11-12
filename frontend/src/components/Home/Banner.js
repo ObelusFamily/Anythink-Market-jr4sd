@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { SEARCH_FILTER } from "../../constants/actionTypes";
 import logo from "../../imgs/logo.png";
 import { connect } from "react-redux";
@@ -9,13 +9,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Banner = (props) => {
-  const [search, setSearch] = useState("");
-
   useEffect(() => {
-    if (search.length >= 3) {
-      props.onKeypress(SEARCH_FILTER, search);
+    if (props.search.length >= 3) {
+      props.onKeypress(SEARCH_FILTER, props.search);
     }
-  }, [search]);
+  }, [props.search]);
 
   return (
     <div className="banner text-white">
@@ -27,7 +25,7 @@ const Banner = (props) => {
             type="text"
             id="search-box"
             placeholder="What is it that you really desire"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => props.setSearch(e.target.value)}
           ></input>
           <span> the cool stuff.</span>
         </div>

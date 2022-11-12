@@ -27,6 +27,18 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      search: "",
+    };
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleSearch(search) {
+    this.setState({ search });
+  }
+
   componentWillMount() {
     const tab = "all";
     const itemsPromise = agent.Items.all;
@@ -45,11 +57,11 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <Banner />
+        <Banner search={this.state.search} setSearch={this.handleSearch} />
 
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
-          <MainView />
+          <MainView search={this.state.search} />
         </div>
       </div>
     );
